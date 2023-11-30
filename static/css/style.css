@@ -1,0 +1,91 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #153677, #4e085f);
+    background-repeat: no-repeat;
+}
+
+.container-wrapper {
+    min-height: 100vh;
+    position: relative;
+}
+
+.container-todo {
+    max-width: 700px;
+}
+
+.logo-tdl {
+    width: 180px;
+}
+
+.form-add {
+    background: #edeef0;
+    border-radius: 10px;
+}
+
+.task-text {
+    color: #edeef0;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.task-text:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+}
+
+.checkbox {
+    height: 28px;
+    width: 28px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+}
+
+.checked span {
+    color: #ffb94b;
+    text-decoration: line-through;
+}
+.task-img .checked img {
+    background-image: url(../images/checked.png);
+}
+
+#btn-delete-completed {
+    font-size: 0.7rem;
+}
+
+.delete-x {
+    display: block;
+    font-size: 22px;
+    color: #ff3d3d;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.border-top {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    color: aliceblue;
+    border-top-style: solid;
+    border-top-color: aliceblue;
+    border-top-width: 1px;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+footer a:hover {
+    text-decoration: underline;
+    color: inherit;
+}

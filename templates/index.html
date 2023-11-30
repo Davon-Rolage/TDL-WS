@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-wrapper">
+    <div class="container-todo p-4 mx-auto">
+
+        <!-- Logo -->
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <img class="logo-tdl"src="{% static 'images/logo.png' %}">
+            </div>
+            {% if user.is_authenticated %}
+                <div class="col-auto text-white">
+                    <span class="username">{{ user.username }}</span>
+                    <a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- Add task input -->
+        <div class="row py-3 justify-content-between align-items-center g-2">
+            <div class="col">
+                <input class="form-control border shadow-none py-2" type="text" id="input-box" name="task" placeholder="Добавить задачу:">
+            </div>
+            <div class="col-auto">
+                <button id="btn-add-task" class="btn btn-sm btn-success shadow-none px-3 py-2">+</button>
+            </div>
+        </div> 
+        
+        <!-- Delete all tasks and delete completed -->
+        <div class="row justify-content-between">
+            <div class="col-auto">
+                <button type="button" id="btn-delete-all" class="btn btn-sm btn-outline-danger shadow-none">Удалить все</button>
+            </div>
+
+            <div class="col-auto">
+                <button type="button" id="btn-delete-completed" class="btn btn-outline-warning shadow-none">Удалить выполненные</button>
+            </div>
+        </div>
+
+        <!-- List of tasks -->
+        <div class="row p-3 mb-5">
+            <div id="list-container">
+                {% for task in tasks %}
+                    <div class="row align-items-center justify-content-between" id="row_{{ task.pk }}">
+                        <!-- Delete task X -->
+                        <div class="col-1">
+                            <span class="delete-x text-center" id="{{ task.pk }}">X</span>
+                        </div>
+                        <!-- Task text -->
+                        <div class="task-text col-9 py-2 text-end {% if task.completed %}checked{% endif %}" id="{{ task.pk }}">
+                            <span class="pl-3">{{ task.title }}</span>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="task-img col-1 px-0" id="{{ task.pk }}">
+                            {% if task.completed %}
+                                <img class="checkbox" src="{% static 'images/checked.png' %}">
+                            {% else %}
+                                <img class="checkbox" src="{% static 'images/unchecked.png' %}">
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <footer class="ps-3 pt-3 ms-3">
+        <p>&copy; 2023 TDL WS, <a href="https://newa.fun" target="_blank">Newa Fun</a></p>
+    </footer>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}
